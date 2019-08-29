@@ -1,5 +1,5 @@
 {
-    "name": "symochan/phalapi-usercheck",
+    "name": "symochan/usercheck",
     "description": "PhalApi 2.x扩展类库，第三方用户登陆检测",
     "type": "library",
     "license": "MIT",
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Phalapi\\Usercheck\\": "src"
+            "Symochan\\Usercheck\\": "src"
         }
     }
 }
