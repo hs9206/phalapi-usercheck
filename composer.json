@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Symochan\\Usercheck\\": "src"
+            "PhalApi\\Usercheck\\": "src"
         }
     }
 }
