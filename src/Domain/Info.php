@@ -1,6 +1,6 @@
 <?php
 namespace PhalApi\Usercheck\Domain;
-use PhalApi\Usercheck\Model\UserSession as ModelSession;
+use PhalApi\Usercheck\Model\User as ModelUser;
 
 /**
  * 用户领域类
@@ -18,7 +18,7 @@ class Info {
             return $rs;
         }
 
-        $model = new ModelSession();
+        $model = new ModelUser();
         $rs = $model->get($userId, 'id, username, nickname, avatar'); //按需获取
 
         if (empty($rs)) {
