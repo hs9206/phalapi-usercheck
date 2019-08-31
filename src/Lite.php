@@ -20,8 +20,6 @@ class Lite
 
     public function __construct($debug = FALSE) {
         $this->debug = $debug;
-
-        // $this->config = \PhalApi\DI()->config->get('app.PHPMailer.email');
     }
 
     /**
