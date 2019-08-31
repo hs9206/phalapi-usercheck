@@ -1,4 +1,22 @@
-# UserCheck
+# PhalApi 2.x扩展类库，第三方用户登陆检测 UserCheck 
+
+
+
+## 安装和配置
+修改项目下的composer.json文件，并添加：  
+```
+    "symochan/phalapi-usercheck":"dev-master"
+```
+
+```
+然后执行```composer update```。  
+
+或直接使用命令安装：
+```php
+composer require symochan/phalapi-usercheck
+```
+
+
 ## 注册
 在./config/di.php文件中，注册用户检测服务：  
 ```php
@@ -6,6 +24,22 @@ $di->usercheck = function() {
     return new \PhalApi\Usercheck\Lite(true);
 };
 ```
+
+## 使用
+1. 打开图片
+```php
+\PhalApi\DI()->image->open('./1.jpg');
+```
+2. 基础方法
+```php
+ \PhalApi\DI()->usercheck->check(); // 登录检测
+ \PhalApi\DI()->usercheck->logout(); // 退出登录
+ \PhalApi\DI()->usercheck->heartbeat(); // 自动续期
+ \PhalApi\DI()->usercheck->generateSession(); // 为用户生成一个会话
+ 
+ \PhalApi\DI()->usercheck->say(); // 测试专用函数
+```
+
 
 ## 可用API
 
