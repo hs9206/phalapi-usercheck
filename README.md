@@ -8,8 +8,11 @@
     "symochan/phalapi-usercheck":"dev-master"
 ```
 
+然后执行
+```php
+composer update
+
 ```
-然后执行```composer update```。  
 
 或直接使用命令安装：
 ```php
@@ -26,9 +29,9 @@ $di->usercheck = function() {
 ```
 
 ## 使用
-1. 打开图片
+1. 测试函数 Say()
 ```php
-\PhalApi\DI()->image->open('./1.jpg');
+ \PhalApi\DI()->usercheck->say(); // 测试专用函数
 ```
 2. 基础方法
 ```php
@@ -36,18 +39,19 @@ $di->usercheck = function() {
  \PhalApi\DI()->usercheck->logout(); // 退出登录
  \PhalApi\DI()->usercheck->heartbeat(); // 自动续期
  \PhalApi\DI()->usercheck->generateSession(); // 为用户生成一个会话
- 
- \PhalApi\DI()->usercheck->say(); // 测试专用函数
+
+
 ```
 
 
-## 可用API
-
+## 可用API 移植于 PhalApi 1.x
+```php
 1	App.Login.GetUserInfo	用户信息	
 
 2	App.Login.Qq	        QQ登录	
 
 3	App.Login.Weixin	    微信登录	
+```
 
 在API调用示例：
 
