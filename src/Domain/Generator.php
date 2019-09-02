@@ -38,6 +38,9 @@ class Generator {
      * @return int 用户id
      */
     protected static function createUser($username, $nickname, $avatar) {
+        $uuid = strtoupper(substr(sha1(uniqid(NULL, TRUE)) . sha1(uniqid(NULL, TRUE)), 0, 32));
+
+
         $newUserInfo = array();
         $newUserInfo['username'] = $username;
         $newUserInfo['nickname'] = $nickname;
@@ -46,6 +49,8 @@ class Generator {
         $newUserInfo['salt'] = \PhalApi\Tool::createRandStr(32);
         $newUserInfo['password'] = '******';
         $newUserInfo['reg_time'] = $_SERVER['REQUEST_TIME'];
+
+        $newUserInfo['uuid'] = $uuid;
 
         $userModel = new ModelUser();
         return $userModel->insert($newUserInfo);

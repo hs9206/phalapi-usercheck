@@ -13,9 +13,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for phalapi_user
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user`;
-CREATE TABLE `phalapi_user` (
+CREATE TABLE IF NOT EXISTS `phalapi_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'UID',
+  `UUID` varchar(32) DEFAULT NULL COMMENT '用户UUID',
   `username` varchar(100) NOT NULL DEFAULT '' COMMENT '用户名',
   `nickname` varchar(50) DEFAULT '' COMMENT '昵称',
   `password` varchar(64) NOT NULL DEFAULT '' COMMENT '密码',
@@ -24,13 +24,13 @@ CREATE TABLE `phalapi_user` (
   `avatar` varchar(255) DEFAULT '' COMMENT '头像',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_unique_key` (`username`)
+  UNIQUE KEY `uuid_unique_key` (`UUID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for phalapi_user_login_qq
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_login_qq`;
-CREATE TABLE `phalapi_user_login_qq` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_login_qq` (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   `qq_openid` varchar(28) DEFAULT '' COMMENT 'QQ的OPENID',
   `qq_token` varchar(150) DEFAULT '' COMMENT 'QQ的TOKEN',
@@ -42,8 +42,7 @@ CREATE TABLE `phalapi_user_login_qq` (
 -- ----------------------------
 -- Table structure for phalapi_user_login_weixin
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_login_weixin`;
-CREATE TABLE `phalapi_user_login_weixin` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_login_weixin` (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   `wx_openid` varchar(28) DEFAULT '' COMMENT '微信OPENID',
   `wx_token` varchar(150) DEFAULT '' COMMENT '微信TOKEN',
@@ -55,8 +54,7 @@ CREATE TABLE `phalapi_user_login_weixin` (
 -- ----------------------------
 -- Table structure for phalapi_user_session
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session`;
-CREATE TABLE `phalapi_user_session` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -71,8 +69,7 @@ CREATE TABLE `phalapi_user_session` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_0
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_0`;
-CREATE TABLE `phalapi_user_session_0` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_0` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -87,8 +84,7 @@ CREATE TABLE `phalapi_user_session_0` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_1
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_1`;
-CREATE TABLE `phalapi_user_session_1` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_1` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -103,8 +99,7 @@ CREATE TABLE `phalapi_user_session_1` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_2
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_2`;
-CREATE TABLE `phalapi_user_session_2` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_2` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -119,8 +114,7 @@ CREATE TABLE `phalapi_user_session_2` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_3
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_3`;
-CREATE TABLE `phalapi_user_session_3` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_3` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -135,8 +129,7 @@ CREATE TABLE `phalapi_user_session_3` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_4
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_4`;
-CREATE TABLE `phalapi_user_session_4` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_4` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -151,8 +144,7 @@ CREATE TABLE `phalapi_user_session_4` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_5
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_5`;
-CREATE TABLE `phalapi_user_session_5` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_5` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -167,8 +159,7 @@ CREATE TABLE `phalapi_user_session_5` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_6
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_6`;
-CREATE TABLE `phalapi_user_session_6` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_6` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -183,8 +174,7 @@ CREATE TABLE `phalapi_user_session_6` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_7
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_7`;
-CREATE TABLE `phalapi_user_session_7` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_7` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -199,8 +189,7 @@ CREATE TABLE `phalapi_user_session_7` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_8
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_8`;
-CREATE TABLE `phalapi_user_session_8` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_8` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
@@ -215,8 +204,7 @@ CREATE TABLE `phalapi_user_session_8` (
 -- ----------------------------
 -- Table structure for phalapi_user_session_9
 -- ----------------------------
-DROP TABLE IF EXISTS `phalapi_user_session_9`;
-CREATE TABLE `phalapi_user_session_9` (
+CREATE TABLE IF NOT EXISTS `phalapi_user_session_9` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `token` varchar(64) DEFAULT '' COMMENT '登录token',
