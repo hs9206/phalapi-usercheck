@@ -15,7 +15,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `phalapi_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'UID',
-  `UUID` varchar(32) DEFAULT NULL COMMENT '用户UUID',
+  `uuid` varchar(32) DEFAULT NULL COMMENT '用户uuid',
   `username` varchar(100) NOT NULL DEFAULT '' COMMENT '用户名',
   `nickname` varchar(50) DEFAULT '' COMMENT '昵称',
   `password` varchar(64) NOT NULL DEFAULT '' COMMENT '密码',
