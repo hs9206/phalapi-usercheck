@@ -1,10 +1,12 @@
 /*
+ Navicat Premium Data Transfer
+
  Source Server Type    : MySQL
  Source Server Version : 80016
  Source Host           : localhost:3306
  Source Schema         : haima_master
 
- Date: 31/08/2019 01:38:42
+ Date: 03/09/2019 15:12:34
 */
 
 SET NAMES utf8mb4;
@@ -15,17 +17,18 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `phalapi_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'UID',
-  `uuid` varchar(32) DEFAULT NULL COMMENT '用户uuid',
   `username` varchar(100) NOT NULL DEFAULT '' COMMENT '用户名',
   `nickname` varchar(50) DEFAULT '' COMMENT '昵称',
   `password` varchar(64) NOT NULL DEFAULT '' COMMENT '密码',
   `salt` varchar(32) DEFAULT NULL COMMENT '随机加密因子',
   `reg_time` int(11) DEFAULT '0' COMMENT '注册时间',
   `avatar` varchar(255) DEFAULT '' COMMENT '头像',
+  `uuid` varchar(32) DEFAULT NULL COMMENT 'uuid',
+  `ext_info` json DEFAULT NULL COMMENT '用户扩展信息',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username_unique_key` (`username`)
-  UNIQUE KEY `uuid_unique_key` (`UUID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `username_unique_key` (`username`),
+  UNIQUE KEY `uuid_unique_key` (`uuid`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for phalapi_user_login_qq
@@ -37,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `phalapi_user_login_qq` (
   `qq_expires_in` int(10) DEFAULT '0' COMMENT 'QQ的失效时间',
   `user_id` bigint(10) DEFAULT '0' COMMENT '绑定的用户ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for phalapi_user_login_weixin
@@ -64,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `phalapi_user_session` (
   `expires_time` int(11) DEFAULT '0' COMMENT '过期时间',
   `ext_data` text COMMENT 'json data here',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for phalapi_user_session_0
