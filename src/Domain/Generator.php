@@ -39,15 +39,17 @@ class Generator {
      */
     protected static function createUser($username, $nickname, $avatar) {
         $uuid = strtoupper(substr(sha1(uniqid(NULL, TRUE)) . sha1(uniqid(NULL, TRUE)), 0, 32));
-
+        $tmpPassword = md5('******');
+        $saltStr = \PhalApi\Tool::createRandStr(32);
 
         $newUserInfo = array();
         $newUserInfo['username'] = $username;
         $newUserInfo['nickname'] = $nickname;
         $newUserInfo['avatar'] = !empty($avatar) ? $avatar : '';
 
-        $newUserInfo['salt'] = \PhalApi\Tool::createRandStr(32);
-        $newUserInfo['password'] = '******';
+        //密码规则： md5(md5('原始密码') 拼接 '32位随机数'))  API接口入参： md5('原始密码') 
+        $newUserInfo['salt'] = $saltStr;
+        $newUserInfo['password'] = md5($tmpPassword.$saltStr);
         $newUserInfo['reg_time'] = $_SERVER['REQUEST_TIME'];
 
         $newUserInfo['uuid'] = $uuid;
